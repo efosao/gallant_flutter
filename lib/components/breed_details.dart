@@ -18,9 +18,10 @@ class _BreedDetails extends State<BreedDetails> {
   Widget build(BuildContext context) {
     return Consumer<ImagesStore>(
       builder: (context, store, child) {
-        var images = store.breedImages[widget.name];
+        final images = store.breedImages[widget.name];
+        final maxPhotos = 8;
 
-        var imagesList = images.take(5).map(
+        final imagesList = images.take(maxPhotos).map(
               (url) => CachedNetworkImage(
                 fadeInDuration: Duration(milliseconds: 300),
                 imageUrl: url,

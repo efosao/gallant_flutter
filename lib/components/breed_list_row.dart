@@ -45,46 +45,54 @@ class _BreedListRow extends State<BreedListRow> {
 
         return VisibilityDetector(
           key: Key(name),
-          child: ListTile(
-            contentPadding: EdgeInsets.zero,
-            leading: SizedBox(
-              height: 100,
-              width: 100,
-              child: ColoredBox(
-                color: Colors.blue,
-                child: imgUrl == ''
-                    ? null
-                    : CachedNetworkImage(
-                        fadeInDuration: Duration(milliseconds: 300),
-                        imageUrl: imgUrl,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) =>
-                            CircularProgressIndicator(),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-              ),
-            ),
-            title: Text(
-              capitalize(name),
-              style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500),
-            ),
-            trailing: Icon(
-              Icons.play_arrow,
-              color: Colors.blue,
-            ),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => BreedDetails(
-                    name: name,
-                  ),
+          child: Container(
+            color: Colors.brown[50],
+            child: ListTile(
+              contentPadding: EdgeInsets.zero,
+              leading: SizedBox(
+                height: 100,
+                width: 100,
+                child: ColoredBox(
+                  color: Colors.brown[200],
+                  child: imgUrl == ''
+                      ? null
+                      : CachedNetworkImage(
+                          fadeInDuration: Duration(milliseconds: 300),
+                          imageUrl: imgUrl,
+                          fit: BoxFit.cover,
+                          placeholder: (context, url) =>
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  child: CircularProgressIndicator()),
+                              ),
+                          errorWidget: (context, url, error) => Icon(Icons.error),
+                        ),
                 ),
               ),
-            },
+              title: Text(
+                capitalize(name),
+                style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500),
+              ),
+              trailing: Icon(
+                Icons.play_arrow,
+                color: Colors.brown[700],
+              ),
+              onTap: () => {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BreedDetails(
+                      name: name,
+                    ),
+                  ),
+                ),
+              },
+            ),
           ),
           onVisibilityChanged: (VisibilityInfo info) {
             if (imagesListSize == 0 && info.visibleFraction > 0.2) {
