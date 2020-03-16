@@ -1,6 +1,6 @@
-# flutter_doggopedia
+# Gallant test in Flutter
 
-A new Flutter project.
+![Test Video](screencap.gif)
 
 ## Getting Started
 
