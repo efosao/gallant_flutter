@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_doggopedia/components/breed_list_row.dart';
 import 'package:flutter_doggopedia/models/breeds.dart';
 import 'package:flutter_doggopedia/services.dart';
 
@@ -17,11 +18,9 @@ class _BreedList extends State<BreedList> {
   @override
   Widget build(BuildContext context) {
     fetchData() async {
-      var breedImages = await getBreedImages('akita');
       var fetchedBreeds = await getBreeds();
       setState(() {
         _breeds = fetchedBreeds;
-        print('akita breed images: ${breedImages.message[0]}');
       });
     }
 
@@ -33,26 +32,7 @@ class _BreedList extends State<BreedList> {
     if (_breeds != null) {
       _breeds.message.forEach((key, value) {
         list.add(
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Image.network(
-                    'https://i.ytimg.com/vi/AZ2ZPmEfjvU/maxresdefault.jpg'),
-              ),
-              Expanded(
-                child: Text(
-                  key,
-                  style: TextStyle(
-                      color: Color.fromRGBO(125, 30, 200, 1),
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              Expanded(
-                child: Icon(Icons.play_arrow),
-              )
-            ],
-          ),
+          BreedListRow(key: Key(key), name: key,)
         );
       });
     }

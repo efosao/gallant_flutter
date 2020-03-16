@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'breedImages.g.dart';
+part 'breed_images.g.dart';
 
 @JsonSerializable()
 class BreedImages {

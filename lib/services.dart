@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_doggopedia/models/breedImages.dart';
+import 'package:flutter_doggopedia/models/breed_images.dart';
 import 'package:flutter_doggopedia/models/breeds.dart';
 import 'package:http/http.dart' as http;
 
