@@ -32,7 +32,7 @@ class _BreedList extends State<BreedList> {
     if (_breeds != null) {
       _breeds.message.forEach((key, value) {
         list.add(
-          BreedListRow(key: Key(key), name: key,)
+          BreedListRow(key: Key(key), name: key, secondaryBreeds: value,)
         );
       });
     }
