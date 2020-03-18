@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
 
-class ImagesStore extends ChangeNotifier {
+import 'package:flutter/foundation.dart';
+
+class ImagesStore with ChangeNotifier {
   final Map<String, List<String>> breedImages = Map();
 
   void add(String name, List<String> images) {
