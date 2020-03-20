@@ -54,7 +54,7 @@ class _BreedListRow extends State<BreedListRow> {
                   leading: SizedBox(
                     height: 100,
                     width: 100,
-                    child: ColoredBox(
+                    child: Container(
                       color: Colors.brown[200],
                       child: imgUrl == ''
                           ? null
