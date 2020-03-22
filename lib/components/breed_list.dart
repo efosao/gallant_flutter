@@ -27,11 +27,9 @@ class _BreedList extends State<BreedList> {
     if (_breeds == null) {
       fetchData();
     }
- 
+
     List<Widget> list = new List<Widget>();
-    list.add(Container(
-      height: 100,
-    ));
+
     if (_breeds != null) {
       _breeds.message.forEach((key, value) {
         list.add(BreedListRow(
@@ -42,17 +40,21 @@ class _BreedList extends State<BreedList> {
       });
     }
 
+    final appBar = AppBar(
+      title: Text('Breed Finder'),
+      toolbarOpacity: 0.8,
+      backgroundColor: Color.fromARGB(100, 100, 50, 50),
+    );
+
+    final toolbarHeight = MediaQuery.of(context).padding.top;
+
     return Scaffold(
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: Text('Breed Finder'),
-          toolbarOpacity: 0.8,
-          backgroundColor: Color.fromARGB(100, 100, 50, 50),
-        ),
+        appBar: appBar,
         body: Container(
           child: (ListView(
             padding: EdgeInsets.all(0),
-            children: list,
+            children: [Container(height: appBar.preferredSize.height + toolbarHeight), ...list],
           )),
         ));
   }
