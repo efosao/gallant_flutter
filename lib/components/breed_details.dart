@@ -72,7 +72,7 @@ class _BreedDetails extends State<BreedDetails> {
                         margin: EdgeInsets.fromLTRB(5, 10, 5, 0),
                         padding: EdgeInsets.all(20),
                         child: Text(secondaryBreeds
-                            .map((s) => capitalize(s))
+                            .map((s) => '${capitalize(s)} ${capitalize(widget.name)}')
                             .join(', ')),
                       ),
                 ...photoList,

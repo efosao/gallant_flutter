@@ -29,22 +29,32 @@ class _BreedList extends State<BreedList> {
     }
 
     List<Widget> list = new List<Widget>();
+
     if (_breeds != null) {
       _breeds.message.forEach((key, value) {
-        list.add(
-          BreedListRow(key: Key(key), name: key, secondaryBreeds: value,)
-        );
+        list.add(BreedListRow(
+          key: Key(key),
+          name: key,
+          secondaryBreeds: value,
+        ));
       });
     }
 
+    final appBar = AppBar(
+      title: Text('Breed Finder'),
+      toolbarOpacity: 0.8,
+      backgroundColor: Color.fromARGB(100, 100, 50, 50),
+    );
+
+    final toolbarHeight = MediaQuery.of(context).padding.top;
+
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Breed Finder'),
-        ),
+        extendBodyBehindAppBar: true,
+        appBar: appBar,
         body: Container(
           child: (ListView(
             padding: EdgeInsets.all(0),
-            children: list,
+            children: [Container(height: appBar.preferredSize.height + toolbarHeight), ...list],
           )),
         ));
   }
