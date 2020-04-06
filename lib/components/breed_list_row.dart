@@ -27,11 +27,7 @@ class _BreedListRow extends State<BreedListRow> {
       builder: (_, imagesStore, child) {
         return Consumer<CounterStore>(
           builder: (_, counterStore, child2) {
-            final imagesList = imagesStore.breedImages[name];
-            var imagesListSize = 0;
-            if (imagesList != null) {
-              imagesListSize = imagesList.length;
-            }
+            final imagesList = imagesStore.breedImages[name] ?? [];
 
             Future<void> setDogImgUrl() async {
               BreedImages images = await svcs.getBreedImages(name);
@@ -54,7 +50,7 @@ class _BreedListRow extends State<BreedListRow> {
                   leading: SizedBox(
                     height: 100,
                     width: 100,
-                    child: ColoredBox(
+                    child: Container(
                       color: Colors.brown[200],
                       child: imgUrl == ''
                           ? null
@@ -80,7 +76,9 @@ class _BreedListRow extends State<BreedListRow> {
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
-                  subtitle: Text(widget.secondaryBreeds.map((s) => capitalize(s)).join(', ')),
+                  subtitle: Text(widget.secondaryBreeds
+                      .map((s) => capitalize(s))
+                      .join(', ')),
                   trailing: Icon(
                     Icons.play_arrow,
                     color: Colors.brown[700],
@@ -99,7 +97,7 @@ class _BreedListRow extends State<BreedListRow> {
                 ),
               ),
               onVisibilityChanged: (VisibilityInfo info) {
-                if (imagesListSize == 0 && info.visibleFraction > 0.2) {
+                if (imagesList.isEmpty && info.visibleFraction > 0.2) {
                   setDogImgUrl();
                 }
               },

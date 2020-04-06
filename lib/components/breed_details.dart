@@ -47,7 +47,7 @@ class _BreedDetails extends State<BreedDetails> {
                     Container(
                       child: Container(
                         padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
-                        child: Text('Photo ${count++}'),
+                        child: Text('${capitalize(widget.name)} ${count++}'),
                       ),
                     )
                   ],
